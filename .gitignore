@@ -1,0 +1,5 @@
+*.log
+*.cache
+__pycache__/
+
+echo "jenkins_home/" 
