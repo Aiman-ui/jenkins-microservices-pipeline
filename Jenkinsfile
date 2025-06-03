@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+		cleanWs()
                 checkout scm
                 echo "Code checked out from GitHub"
             }
