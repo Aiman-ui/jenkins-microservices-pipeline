@@ -10,21 +10,17 @@ pipeline {
 
         stage('Build Docker Images') {
             steps {
-                dir('Lab') {
-                    echo "Building Docker images for all services..."
-                    sh 'docker build -t auth-service ./microservices/auth-service'
-                    sh 'docker build -t user-service ./microservices/user-service'
-                    sh 'docker build -t job-service ./microservices/job-service'
-                }
+                echo "Building Docker images for all services..."
+                sh 'docker build -t auth-service ./microservices/auth-service'
+                sh 'docker build -t user-service ./microservices/user-service'
+                sh 'docker build -t job-service ./microservices/job-service'
             }
         }
 
         stage('Run Services with Docker Compose') {
             steps {
-                dir('Lab') {
-                    echo "Running all services using docker-compose..."
-                    sh 'docker-compose up -d'
-                }
+                echo "Running all services with docker-compose..."
+                sh 'docker-compose up -d'
             }
         }
     }
